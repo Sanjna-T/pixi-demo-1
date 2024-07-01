@@ -34,7 +34,7 @@ export const Config = {
                 max: 9
             },
             offset: {
-                min: 60,
+                min: 80,
                 max: 200
             }
         }
