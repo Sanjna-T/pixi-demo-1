@@ -3,12 +3,14 @@ import * as PIXI from "pixi.js";
 import { App } from '../system/App';
 // [10]
 import { Diamond } from './Diamond';
+import { Block } from './Block';
 // [/10]
 
 export class Platform {
     constructor(rows, cols, x) {
         // [10]
         this.diamonds = [];
+        this.blocks = []
         // [/10]
 
         this.rows = rows;
@@ -24,6 +26,7 @@ export class Platform {
         this.dx = App.config.platforms.moveSpeed;
         this.createBody();
         this.createDiamonds();
+        this.createBlocks();
     }
 
     // [10]
@@ -31,7 +34,10 @@ export class Platform {
         const y = App.config.diamonds.offset.min + Math.random() * (App.config.diamonds.offset.max - App.config.diamonds.offset.min);
 
         for (let i = 0; i < this.cols; i++) {
-            if (Math.random() < App.config.diamonds.chance) {
+            let num = Math.random()
+            if ( num < App.config.diamonds.chance) {
+                // console.log("rand num", num)
+                // console.log("chance", App.config.diamonds.chance)
                 this.createDiamond(this.tileSize * i, -y);
             }
         }
@@ -43,6 +49,26 @@ export class Platform {
             diamond.createBody();
             this.diamonds.push(diamond);
     }
+
+    createBlocks() {
+        const y = App.config.diamonds.offset.min + Math.random() * (App.config.diamonds.offset.max - App.config.diamonds.offset.min);
+
+        for (let i = 0; i < this.cols; i++) {
+            if (i % 15 == 0 ) { // i dont like this solution
+                
+                this.createBlock(this.tileSize * i, -y);
+            }
+        }
+
+
+    }
+
+    createBlock(x, y) {
+        const block = new Block(x, y);
+        this.container.addChild(block.sprite);
+        block.createBody();
+        this.blocks.push(block);
+}
     // [/10]
 
     createBody() {
@@ -86,6 +112,7 @@ export class Platform {
     destroy() {
         Matter.World.remove(App.physics.world, this.body);
         this.diamonds.forEach(diamond => diamond.destroy());
+        this.blocks.forEach(block => block.destroy());
         this.container.destroy();
     }
 }
