@@ -52,6 +52,7 @@ export class GameScene extends Scene {
 
         if (hero && block) {
             this.hero.breakBlock(block.gameBlock);
+            App.config.platforms.moveSpeed -= .25
         }
     }
 
@@ -67,6 +68,7 @@ export class GameScene extends Scene {
         // [14]
         this.hero.sprite.once("die", () => {
             App.scenes.start("Game");
+            App.config.platforms.moveSpeed = -1.5
         });
         // [/14]
     }

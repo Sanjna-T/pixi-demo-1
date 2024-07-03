@@ -23,7 +23,7 @@ export const Config = {
         }
     },
     blocks: {
-        chance: 0.4, //0.1,
+        chance: 0.2,
         offset: {
             min: 100,
             max: 200
