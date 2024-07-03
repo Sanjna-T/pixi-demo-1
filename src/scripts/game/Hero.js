@@ -21,6 +21,14 @@ export class Hero {
         //[/13]
         diamond.destroy();
     }
+
+    breakBlock(block) {
+        this.score += 5;
+        //[13]
+        this.sprite.emit("score");
+        //[/13]
+        block.destroy();
+    }
     //[/12]
 
     startJump() {

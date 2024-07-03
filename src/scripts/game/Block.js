@@ -16,14 +16,13 @@ export class Block {
     update() {
         if (this.sprite) {
             Matter.Body.setPosition(this.body, {x: this.sprite.width / 2 + this.sprite.x + this.sprite.parent.x, y: this.sprite.height / 2 + this.sprite.y + this.sprite.parent.y});
-            Matter.Body.scale(this.body, 0.1, 0.1)
         }
     }
 
     createBody() {
         this.body = Matter.Bodies.rectangle(this.sprite.width / 2 + this.sprite.x + this.sprite.parent.x, this.sprite.height / 2 + this.sprite.y + this.sprite.parent.y, this.sprite.width, this.sprite.height, {friction: 0, isStatic: true, render: { fillStyle: '#060a19' }});
         this.body.isSensor = true;
-        this.body.gameDiamond = this;
+        this.body.gameBlock = this;
         Matter.World.add(App.physics.world, this.body);
     }
 

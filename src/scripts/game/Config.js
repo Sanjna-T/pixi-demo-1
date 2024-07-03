@@ -22,6 +22,13 @@ export const Config = {
             max: 200
         }
     },
+    blocks: {
+        chance: 0.4, //0.1,
+        offset: {
+            min: 100,
+            max: 200
+        }
+    },
     platforms: {
         moveSpeed: -1.5,
         ranges: {

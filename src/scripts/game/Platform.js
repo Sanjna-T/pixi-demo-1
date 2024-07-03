@@ -54,7 +54,8 @@ export class Platform {
         const y = App.config.diamonds.offset.min + Math.random() * (App.config.diamonds.offset.max - App.config.diamonds.offset.min);
 
         for (let i = 0; i < this.cols; i++) {
-            if (i % 15 == 0 ) { // i dont like this solution
+            let num = Math.random()
+            if ( num < App.config.blocks.chance) { // i dont like this solution
                 
                 this.createBlock(this.tileSize * i, -y);
             }

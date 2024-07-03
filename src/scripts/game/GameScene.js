@@ -51,7 +51,7 @@ export class GameScene extends Scene {
         const block = colliders.find(body => body.gameBlock);
 
         if (hero && block) {
-            this.hero.collectDiamond(block.gameBlock);
+            this.hero.breakBlock(block.gameBlock);
         }
     }
 
