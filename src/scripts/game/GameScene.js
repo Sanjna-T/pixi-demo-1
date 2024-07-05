@@ -22,9 +22,12 @@ export class GameScene extends Scene {
         this.container.addChild(this.labelScore);
         this.hero.sprite.on("score", () => {
             this.labelScore.renderScore(this.hero.score);
+            console.log(App.config.score.style.fontSize)
         });
     }
     //[13]
+
+
 
     setEvents() {
         Matter.Events.on(App.physics, 'collisionStart', this.onCollisionStart.bind(this));
@@ -52,6 +55,10 @@ export class GameScene extends Scene {
 
         if (hero && block) {
             this.hero.breakBlock(block.gameBlock);
+            App.config.score.style.fontSize += 10
+            this.labelScore.destroy();
+            this.createUI()
+            console.log("font size coll", App.config.score.style.fontSize)
             App.config.platforms.moveSpeed -= .25
         }
     }
@@ -69,6 +76,9 @@ export class GameScene extends Scene {
         this.hero.sprite.once("die", () => {
             App.scenes.start("Game");
             App.config.platforms.moveSpeed = -3
+            App.config.score.style.fontSize = 44
+            console.log("font size die", App.config.score.style.fontSize)
+
         });
         // [/14]
     }

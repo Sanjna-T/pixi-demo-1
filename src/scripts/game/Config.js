@@ -5,7 +5,7 @@ export const Config = {
     loader: Tools.massiveRequire(require["context"]('./../../sprites/', true, /\.(mp3|png|jpe?g)$/)),
     bgSpeed: 2,
     score: {
-        x: 10,
+        x:  5 + window.innerWidth/2,
         y: 10,
         anchor: 0,
         style: {
