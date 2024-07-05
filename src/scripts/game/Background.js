@@ -11,7 +11,8 @@ export class Background {
     createSprites() {
         this.sprites = [];
 
-        for (let i = 0; i < 3; i++) {
+        //render more background images at a time
+        for (let i = 0; i < 10; i++) {
             this.createSprite(i);
         }
     }
@@ -19,6 +20,7 @@ export class Background {
     createSprite(i) {
         const sprite = App.sprite("bg");
 
+        sprite.scale.y = 1.20;
         sprite.x = sprite.width * i;
         sprite.y = 0;
         this.container.addChild(sprite);

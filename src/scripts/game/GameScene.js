@@ -68,7 +68,7 @@ export class GameScene extends Scene {
         // [14]
         this.hero.sprite.once("die", () => {
             App.scenes.start("Game");
-            App.config.platforms.moveSpeed = -1.5
+            App.config.platforms.moveSpeed = -3
         });
         // [/14]
     }
